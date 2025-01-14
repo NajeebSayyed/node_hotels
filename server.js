@@ -1,6 +1,8 @@
 const express = require("express");
 const db = require("./db");
-const Person = require("./Person");
+require("dotenv").config();
+const PORT = process.env.PORT || 3000;
+
 const app = express();
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
@@ -16,6 +18,6 @@ app.get("/chicken", (req, res) => {
 const personRoutes = require("./routers/personRoutes");
 app.use("/person", personRoutes);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Linstening on port 3000");
 });
